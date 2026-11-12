@@ -5,30 +5,40 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float speed;
     [SerializeField] private float jumpForce;
+    [SerializeField] private float multiplier = 0.5f;
 
     [SerializeField] private Rigidbody2D rb;
 
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Transform groundCheck;
+    [SerializeField] private PlayerInput playerInput;
 
+    private float currentTime;
+    private float maxtime = 3;
     private float direction;
 
-    void Start()
+    private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+
     }
 
     private void FixedUpdate()
     {
         rb.linearVelocity = new Vector2 (direction * speed, rb.linearVelocity.y);
+
     }
 
     public void Jump(InputAction.CallbackContext context)
     {
+
         if(context.performed && IsGrounded() )
         {
+            jumpForce *= Time.deltaTime;
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            Debug.Log("jump");
         }
+
+        
     }
 
     public void Move(InputAction.CallbackContext context)
@@ -38,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
         direction = context.ReadValue<Vector2>().x;
     }  
 
+    //isGrounded prevent infinite jumping and only jump once after the player touched the ground layer
     private bool IsGrounded()
     {
         return Physics2D.OverlapCapsule(groundCheck.position, new Vector2(1f, 0.1f), CapsuleDirection2D.Horizontal, 0, groundLayer);
