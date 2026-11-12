@@ -23,6 +23,13 @@ public class PlayerMovement : MonoBehaviour
         rb.linearVelocity = new Vector2 (direction * speed, rb.linearVelocity.y);
     }
 
+    public void Jump(InputAction.CallbackContext context)
+    {
+        if(context.performed && IsGrounded() )
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+        }
+    }
 
     public void Move(InputAction.CallbackContext context)
     {
@@ -30,5 +37,10 @@ public class PlayerMovement : MonoBehaviour
         //tra lai gia tri float tu -1 den 1
         direction = context.ReadValue<Vector2>().x;
     }  
+
+    private bool IsGrounded()
+    {
+        return Physics2D.OverlapCapsule(groundCheck.position, new Vector2(1f, 0.1f), CapsuleDirection2D.Horizontal, 0, groundLayer);
+    }
 
 }
