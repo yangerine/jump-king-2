@@ -708,8 +708,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 042a4ceca5843404d97109dfee0f09f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  speed: 5
-  action: {fileID: 0}
+  speed: 10
+  jumpForce: 10
+  rb: {fileID: 1262111049}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  groundCheck: {fileID: 0}
 --- !u!114 &1262111054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -738,26 +743,70 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1262111053}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: Move
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 141ce1d7-c734-41a9-97de-522ae9dac62b
-    m_ActionName: 'PlayerMovement/Jump[/Keyboard/space]'
+    m_ActionId: 6d8f3f89-548d-42a1-9f4f-571cdbc219ef
+    m_ActionName: 'Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]'
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: e5a43991-1296-4b27-bf0f-e3fca421d958
-    m_ActionName: 'PlayerMove/Move[/Keyboard/a,/Keyboard/d]'
+    m_ActionId: 0248c028-c906-46a1-bdfd-46bea5163882
+    m_ActionName: 'Player/Look[/Mouse/delta]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a1be37df-92f9-40ba-833e-f29565b32311
+    m_ActionName: 'Player/Fire[/Mouse/leftButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1dbb4103-487d-464f-a4b3-18b032465760
+    m_ActionName: 'UI/Navigate[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 44976114-3bc0-4cfe-9d36-953ebf1663d5
+    m_ActionName: 'UI/Submit[/Keyboard/enter]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1794aa64-f4b0-4b1c-a8ac-0cc9120be14a
+    m_ActionName: 'UI/Cancel[/Keyboard/escape]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 18b97168-c7a9-4ea7-bdb6-7a363e3dc463
+    m_ActionName: 'UI/Point[/Mouse/position]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5e9e1f9c-5830-49dc-8d60-207df66e8627
+    m_ActionName: 'UI/Click[/Mouse/leftButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: cb3e1851-d4a0-4fe0-bfe4-68d183d51fe6
+    m_ActionName: 'UI/ScrollWheel[/Mouse/scroll]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 62a0c0bb-fb04-441d-953b-9a35e23c2dd0
+    m_ActionName: 'UI/MiddleClick[/Mouse/middleButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1054c14a-75a7-4af3-ae22-f1e4b09a9d7c
+    m_ActionName: 'UI/RightClick[/Mouse/rightButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 22f9e124-c721-4c8e-82d1-5d3ef0b39abe
+    m_ActionName: UI/TrackedDevicePosition
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2c3cf71a-5635-43e0-8a6c-54a376341268
+    m_ActionName: UI/TrackedDeviceOrientation
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: PlayerMove
+  m_DefaultControlScheme: Keyboard&Mouse
+  m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
