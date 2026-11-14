@@ -6,13 +6,15 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float speed;
     [SerializeField] private float jumpForce;
-    [SerializeField] private float multiplier;
     [SerializeField] private float maxMultiplier;
     [SerializeField] private float minMultiplier;
+    private float multiplier;
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Transform groundCheck;
+    [SerializeField] private Transform wallCheck;
+
     [SerializeField] private PlayerInput playerInput;
     [SerializeField] private PhysicsMaterial2D bounceMat, normalMat;
 
@@ -24,14 +26,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        if (rb.linearVelocity.y > 0)
-        {
-            //khi in air state thi bounce
-            rb.sharedMaterial = bounceMat;
-        } else
-        {
-            rb.sharedMaterial = normalMat;
-        }
+       
     }
 
     private void FixedUpdate()
@@ -59,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
             holdDuration = (float)context.time - pressStartTime;
             Debug.Log("held duration: " + holdDuration);
 
-            float multiplier = Mathf.Clamp(holdDuration, minMultiplier, maxMultiplier);
+            float multiplier = Mathf.Clamp(holdDuration, minMultiplier, maxMultiplier); //clamp dung de goi han multiplier trong 1 khoang
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce * multiplier);
             Debug.Log("long jump");
 
@@ -80,4 +75,5 @@ public class PlayerMovement : MonoBehaviour
         return Physics2D.OverlapCapsule(groundCheck.position, new Vector2(1f, 0.1f), CapsuleDirection2D.Horizontal, 0, groundLayer);
     }
 
+    
 }
