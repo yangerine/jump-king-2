@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -5,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float speed;
     [SerializeField] private float jumpForce;
-    [SerializeField] private float multiplier = 0.5f;
+    [SerializeField] private float multiplier;
 
     [SerializeField] private Rigidbody2D rb;
 
@@ -13,9 +14,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private PlayerInput playerInput;
 
-    private float currentTime;
-    private float maxtime = 3;
     private float direction;
+    private bool canJump = true;
+
+    private float pressStartTime;
+    private float holdDuration;
 
     private void Start()
     {
@@ -25,20 +28,30 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         rb.linearVelocity = new Vector2 (direction * speed, rb.linearVelocity.y);
-
     }
 
     public void Jump(InputAction.CallbackContext context)
     {
 
-        if(context.performed && IsGrounded() )
+        if (context.performed && IsGrounded() )
         {
-            jumpForce *= Time.deltaTime;
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-            Debug.Log("jump");
+            pressStartTime = (float)context.startTime;
+
+            Debug.Log("press start time: " + pressStartTime);
+            //Debug.Log("hold");
+        }
+        else if (context.canceled && IsGrounded() ) 
+        {
+            holdDuration = (float)context.time - pressStartTime;
+            Debug.Log("held duration: " + holdDuration);
+
+            float multiplier = Mathf.Clamp(holdDuration, 1f, 1.8f);
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce * multiplier);
+            Debug.Log("long jump");
+
         }
 
-        
+
     }
 
     public void Move(InputAction.CallbackContext context)

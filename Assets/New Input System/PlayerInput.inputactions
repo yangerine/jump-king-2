@@ -22,7 +22,7 @@
                     "id": "27bf96f7-08f9-4b01-afca-665bb2985257",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Press(pressPoint=1),Press(pressPoint=0.5,behavior=1)",
                     "initialStateCheck": false,
                     "priority": 0
                 }
@@ -166,7 +166,7 @@
                     "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Keyboard&Mouse;Touch",
+                    "groups": ";Keyboard&Mouse;Touch;Joystick",
                     "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
