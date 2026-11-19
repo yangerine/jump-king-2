@@ -1,0 +1,36 @@
+{
+    "version": 1,
+    "name": "UIInput",
+    "maps": [
+        {
+            "name": "UI",
+            "id": "0e5f9c4d-3938-4fdd-ade4-7a988098d243",
+            "actions": [
+                {
+                    "name": "Click",
+                    "type": "Button",
+                    "id": "25938d02-9c48-4c97-bdbb-d98d949d0d51",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "29e44fc5-648f-48b7-9397-fb05315ffcb8",
+                    "path": "<Mouse>/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
