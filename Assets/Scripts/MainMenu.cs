@@ -17,8 +17,6 @@ public class MainMenu : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
-
         gameObjectHide.SetActive(true);
 
         foreach (var item in gameObjectsShow)
@@ -31,6 +29,7 @@ public class MainMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (InputUI.leftClick.action.IsPressed())
         {
             gameObjectHide.SetActive(false) ;
@@ -41,5 +40,28 @@ public class MainMenu : MonoBehaviour
         }
     }
 
+    public void OnNewGameButtonPress()
+    {
+        Debug.Log("Load Scene: Start Screen");
+    }
 
+    public void OnContinueButtonPess()
+    {
+        Debug.Log("Load Scene: Last Loaded Scene");
+    }
+
+    public void OnOtherBabeButtonPress()
+    {
+        Debug.Log("You need to rescue the first Babe.");
+    }
+
+    public void OnSettingButtonPress()
+    {
+        Debug.Log("Load Scene: Setting");
+    }
+
+    public void OnShopButtonPress()
+    {
+        Debug.Log("Load Scene: Shop");
+    }
 }
