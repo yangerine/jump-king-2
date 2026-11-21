@@ -13,11 +13,13 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private GameObject gameObjectHide;
     [Tooltip("Show")]
     [SerializeField] private GameObject[] gameObjectsShow;
+    [SerializeField] private GameObject SettingMenu;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         gameObjectHide.SetActive(true);
+        SettingMenu.SetActive(false);
 
         foreach (var item in gameObjectsShow)
         {
@@ -58,6 +60,7 @@ public class MainMenu : MonoBehaviour
     public void OnSettingButtonPress()
     {
         Debug.Log("Load Scene: Setting");
+
     }
 
     public void OnShopButtonPress()
