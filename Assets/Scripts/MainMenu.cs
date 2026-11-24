@@ -31,7 +31,6 @@ public class MainMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         if (InputUI.leftClick.action.IsPressed())
         {
             gameObjectHide.SetActive(false) ;
@@ -60,11 +59,20 @@ public class MainMenu : MonoBehaviour
     public void OnSettingButtonPress()
     {
         Debug.Log("Load Scene: Setting");
+        SettingMenu.SetActive(true);
 
     }
 
     public void OnShopButtonPress()
     {
         Debug.Log("Load Scene: Shop");
+    }
+
+    public void OnExitButtonPress()
+    {
+        if (SettingMenu.activeInHierarchy)
+        {
+            SettingMenu.SetActive(false);
+        }
     }
 }
